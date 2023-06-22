@@ -48,5 +48,6 @@ public class Main {
         for (Iterator<Month> it = monthSet.iterator(); it.hasNext();) {
             System.out.println(it.next().getName());
         }
+
     }
 }

@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class FileUtil {
-    private static final String FILE_PATH = "C:\\_PROGRAMMING\\BackEnd_ITAcademy\\Sprint1_S3\\src\\S3_N1_E3";
+    private static final String FILE_PATH = "src\\S3_N1_E3";
 
     public static HashMap<String, String> readFile() {
         File f = new File(FILE_PATH+"\\countries.txt");
@@ -19,7 +19,6 @@ public class FileUtil {
             System.out.println(e.getMessage());
         } catch (IOException e) {
             System.out.println(e.getMessage());
-            ;
         }
 //        System.out.println(countriesMap.entrySet());
         return countriesMap;

@@ -9,33 +9,13 @@ public class CountryGame {
     private int score;
     private HashMap<String,String> countriesMap;
     private List<String> questions;
-    private final int NUMBER_OF_QUESTIONS = 10;
+    private static final int NUMBER_OF_QUESTIONS = 10;
 
     public CountryGame() {
         this.namePlayer = askForString("Entra el nom del jugador/a: ");
         this.score = 0;
         this.countriesMap = new HashMap<String, String>();
         this.questions = new ArrayList<>();
-    }
-
-
-    public HashMap<String, Integer> playGame(HashMap<String,String> countriesMap) {
-        Scanner sc = new Scanner(System.in);
-        List<String> questions = getQuestionList(countriesMap);
-        for (int i = 0; i< NUMBER_OF_QUESTIONS; i++) {
-            Random random = new Random();
-            String questionRandom = questions.get(random.nextInt(questions.size()));
-            System.out.println("Quina és la capital de: "+questionRandom);
-            String answer = sc.nextLine();
-            if(countriesMap.get(questionRandom).equalsIgnoreCase(answer)) {
-                score++;
-            }
-        }
-        System.out.println("La puntuació total del jugador: "+namePlayer+" és "+score);
-        HashMap<String,Integer> resultats = new HashMap<>();
-        resultats.put(namePlayer,score);
-        sc.close();
-        return resultats;
     }
 
     public HashMap<String, Integer> playGameWithoutDuplicates (HashMap<String,String> countriesMap) {
@@ -54,25 +34,19 @@ public class CountryGame {
                 score++;
             }
         }
+        return resultats(sc);
+
+    }
+
+    private HashMap<String, Integer> resultats(Scanner sc) {
         System.out.println("La puntuació total del jugador: "+namePlayer+" és "+score);
         HashMap<String,Integer> resultats = new HashMap<>();
         resultats.put(namePlayer,score);
         sc.close();
         return resultats;
-
     }
 
-
-    public static List<String> getQuestionList (HashMap<String,String> countriesMap) {
-        List<String> questions = new ArrayList<>(countriesMap.keySet().stream().toList());
-//        System.out.println(questions.size());
-//        for ( String q:questions){
-//            System.out.println(q);
-//        }
-        return questions;
-    }
-
-    public static String askForString(String message) {
+    private String askForString(String message) {
         Scanner sc = new Scanner(System.in);
         boolean checked = false;
         String input = null;
@@ -88,6 +62,34 @@ public class CountryGame {
         }
         return input;
     }
+
+    //    public HashMap<String, Integer> playGame(HashMap<String,String> countriesMap) {
+//        Scanner sc = new Scanner(System.in);
+//        List<String> questions = getQuestionList(countriesMap);
+//        for (int i = 0; i< NUMBER_OF_QUESTIONS; i++) {
+//            Random random = new Random();
+//            String questionRandom = questions.get(random.nextInt(questions.size()));
+//            System.out.println("Quina és la capital de: "+questionRandom);
+//            String answer = sc.nextLine();
+//            if(countriesMap.get(questionRandom).equalsIgnoreCase(answer)) {
+//                score++;
+//            }
+//        }
+//        System.out.println("La puntuació total del jugador: "+namePlayer+" és "+score);
+//        HashMap<String,Integer> resultats = new HashMap<>();
+//        resultats.put(namePlayer,score);
+//        sc.close();
+//        return resultats;
+//    }
+
+    //    private static List<String> getQuestionList (HashMap<String,String> countriesMap) {
+//        List<String> questions = new ArrayList<>(countriesMap.keySet().stream().toList());
+////        System.out.println(questions.size());
+////        for ( String q:questions){
+////            System.out.println(q);
+////        }
+//        return questions;
+//    }
 }
 
 

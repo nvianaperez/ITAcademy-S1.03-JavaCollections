@@ -30,5 +30,6 @@ public class Main {
             integerList1.add(it.previous());
         }
         System.out.println(integerList1);
+
     }
 }
